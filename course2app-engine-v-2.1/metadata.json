@@ -1,0 +1,6 @@
+{
+  "name": "Course2App Engine",
+  "description": "No-Code Branded Android App Generator for Courses & Websites with Capacitor Android Template & GitHub Actions",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -20,6 +20,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./course2app-engine-v-2.1
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,6 +32,16 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+
+      - name: Check project
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Project files:"
+          ls -la
+          echo "Package.json:"
+          test -f package.json
+          echo "package.json found."
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -41,7 +55,7 @@ jobs:
           find dist -maxdepth 2 -type f | sort
           echo "===== INDEX CHECK ====="
           test -f dist/index.html
-          echo "index.html exists"
+          echo "index.html exists."
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -49,7 +63,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: ./course2app-engine-v-2.1/dist
 
   deploy:
     needs: build
